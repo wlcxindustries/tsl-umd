@@ -1,0 +1,25 @@
+[package]
+name = "tsl-umd"
+description = "TSL UMD tally protocol implementation"
+repository = "https://github.com/wlcxindustries/tsl-umd"
+license-file = "license.txt"
+version = "0.1.0"
+edition = "2024"
+keywords = ["TSL", "UMD", "tally", "protocol"]
+categories = ["no-std"]
+
+[dependencies]
+clap = { version = "4.5.40", optional = true, features = ["derive"] }
+defmt = { version = "1.0.1", optional = true }
+
+[[bin]]
+name = "cli"
+path = "src/bin/main.rs"
+required-features = ["cli"]
+
+
+[features]
+default = []
+std = []
+defmt = ["dep:defmt"]
+cli = ["dep:clap", "std"]
