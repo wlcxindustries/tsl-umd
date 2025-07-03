@@ -1,5 +1,5 @@
 # TSL UMD protocols 🦀 📹
-[docs](https://docs.rs/tsl-umd) | [crate](https://crates.io/crate/tsl-umd)
+[docs](https://docs.rs/tsl-umd) | [crate](https://crates.io/crates/tsl-umd)
 
 This is a Rust implementation of the TSL UMD family of tally protocols.
 

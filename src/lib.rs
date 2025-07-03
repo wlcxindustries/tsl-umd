@@ -6,9 +6,12 @@
 //!
 //! An existing buffer of bytes is interpreted as a TSL UMD packet with the `new_checked` functions:
 //! ```rust
-//!   use tsl_umd::v3_1::TSL31Packet;
-//!   let raw = [0x8D, 0x19, b'h', b'e', b'l', b'l', b'o', 0,0,0,0,0,0,0,0,0,0,0];
-//!   let p = TSL31Packet::new_checked(raw).unwrap();
+//!   use tsl_umd::v3_1::{TSL31Packet, PACKET_LENGTH_31};
+//!   let raw = [0u8; PACKET_LENGTH_31];
+//!   let mut p = TSL31Packet::new_unchecked(raw);
+//!   p.set_address(13);
+//!   p.set_display_data("hello");
+//!   p.set_tally([true, false, false, false]);
 //!   assert_eq!(p.address(), 13);
 //!   assert_eq!(p.display_data(), "hello");
 //!   assert!(p.tally()[0]);

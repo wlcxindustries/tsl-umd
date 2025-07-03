@@ -3,6 +3,7 @@ name = "tsl-umd"
 description = "TSL UMD tally protocol implementation"
 repository = "https://github.com/wlcxindustries/tsl-umd"
 license-file = "license.txt"
+readme = "readme.md"
 version = "0.1.0"
 edition = "2024"
 keywords = ["TSL", "UMD", "tally", "protocol"]
