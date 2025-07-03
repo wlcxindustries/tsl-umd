@@ -24,14 +24,14 @@ pub enum Brightness {
     Full,
 }
 
-impl Into<u8> for Brightness {
+impl From<Brightness> for u8 {
     /// The brightness value as a u8
-    fn into(self) -> u8 {
-        match self {
-            Self::Zero => 0,
-            Self::OneSeventh => 36, // Approx
-            Self::OneHalf => 128,
-            Self::Full => 255,
+    fn from(val: Brightness) -> Self {
+        match val {
+            Brightness::Zero => 0,
+            Brightness::OneSeventh => 36, // Approx
+            Brightness::OneHalf => 128,
+            Brightness::Full => 255,
         }
     }
 }
@@ -172,14 +172,18 @@ where
     }
 }
 
+/// The given address was out of range
+#[derive(Debug)]
+pub struct AddressOutOfRangeError;
+
 impl<T> TSL31Packet<T>
 where
     T: AsMut<[u8]> + AsRef<[u8]>,
 {
     /// Set the address. Return Err(()) if the addr is out of range
-    pub fn set_address(&mut self, addr: u8) -> Result<(), ()> {
+    pub fn set_address(&mut self, addr: u8) -> Result<(), AddressOutOfRangeError> {
         if !(0x0..=0x7E).contains(&addr) {
-            return Err(());
+            return Err(AddressOutOfRangeError);
         }
         self.buf.as_mut()[fields::ADDRESS] = addr + 0x80;
         Ok(())
