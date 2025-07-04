@@ -13,6 +13,13 @@ This is a Rust implementation of the TSL UMD family of tally protocols.
 - [x] Zero copy (more or less) - fields are extracted from the buffer when you need them.
   If you don't need them, there's no overhead.
 
+## Tested against
+> [!NOTE]
+> If you've successfully used this crate with some other hardware or software open an issue
+> so we can add it here!
+
+- [Tallyarbiter](https://josephdadams.github.io/TallyArbiter/)
+
 ## CLI
 There's also a handy CLI utility! You need to specify the `cli` feature to actually get it:
 
