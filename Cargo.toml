@@ -14,7 +14,7 @@ clap = { version = "4.5.40", optional = true, features = ["derive"] }
 defmt = { version = "1.0.1", optional = true }
 
 [[bin]]
-name = "cli"
+name = "tslcli"
 path = "src/bin/main.rs"
 required-features = ["cli"]
 
