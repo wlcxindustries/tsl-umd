@@ -18,17 +18,15 @@ jobs:
   check:
     name: Pre-release checks
     runs-on: ubuntu-latest
-    env:
-      DO_HACKY_VERSION_CHECK: 1
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           persist-credentials: true
-
       - name: Install rust
         uses: dtolnay/rust-toolchain@stable
-
+      - run: cargo install cargo-check-tag
+      - run: cargo check-tag
       - uses: Swatinem/rust-cache@v2
       - name: cargo check
         run: cargo check --all-targets
